@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CtrlAltDelete</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/common.css" />
+    <script src="js/auth/register.js" type="module"></script>
+  </head>
+  <body>
+    <div class="d-flex align-items-center vh-100">
+      <div class="modal-dialog modal-lg border border-secondary">
+        <div class="modal-content">
+          <div class="modal-header mt-5 mx-5 mb-4">
+            <h5 class="modal-title d-flex align-items-center fw-bold">
+              <i class="bi bi-person-lines-fill fs-3"></i>
+              User Registration
+            </h5>
+            <button
+              id="closeModalBtn"
+              type="button"
+              class="btn-close shadow-none"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- Notification -->
+          <div class="alert alert-success d-none mx-5" role="alert"></div>
+          <div class="alert alert-danger d-none mx-5" role="alert"></div>
+          <!-- Registration Form -->
+          <form id="form_register">
+            <div class="modal-body mx-5">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 ps-0 mb-3">
+                    <label for="firstname" class="form-label">Firstname</label>
+                    <input
+                      id="firstname"
+                      name="firstname"
+                      type="text"
+                      required
+                      class="form-control shadow-none"
+                    />
+                  </div>
+                  <div class="col-md-6 p-0 mb-3">
+                    <label for="lastname" class="form-label">Lastname</label>
+                    <input
+                      id="lastname"
+                      name="lastname"
+                      type="text"
+                      required
+                      class="form-control shadow-none"
+                    />
+                  </div>
+                  <div class="p-0 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      class="form-control shadow-none"
+                    />
+                  </div>
+                  <div class="col-md-6 ps-0 mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      required
+                      class="form-control shadow-none"
+                    />
+                  </div>
+                  <div class="col-md-6 p-0 mb-3">
+                    <label for="password_confirmation" class="form-label"
+                      >Confirm Password</label
+                    >
+                    <input
+                      id="password_confirmation"
+                      name="password_confirmation"
+                      type="password"
+                      required
+                      class="form-control shadow-none"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="text-center mb-5">
+                <button type="submit" class="btn btn-dark btn-block">
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <h6 class="text-center bg-dark text-white p-3 m-0">
+      Copyright ©2023. Designed by CtrlAltDelete
+    </h6>
+    <script>
+      // JavaScript function to handle modal closing and redirecting
+      document
+        .getElementById("closeModalBtn")
+        .addEventListener("click", function () {
+          // Assuming you want to redirect to the homepage URL '/'
+          window.location.href = "index.html";
+        });
+    </script>
+  </body>
+</html>

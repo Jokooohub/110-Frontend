@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Rooms</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="../admin/js/showroom.js"></script>
+    <script type="module" src="../admin/js/rooms.js"></script>
+  </head>
+  <body class="bg-white">
+    <div
+      class="container-fluid bg-dark text-light p-3 d-flex align-items-center justify-content-between sticky-top"
+    >
+      <h3 class="mb-0">CAD Admin</h3>
+      <a href="login.html" class="btn btn-light btn-sm">Log out</a>
+    </div>
+
+    <div
+      class="col-lg-2 bg-dark border-top border-3 border-secondary"
+      id="dashboard-menu"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid flex-lg-column align-items-stretch">
+          <h4 class="mt-2 text-light">Admin Panel</h4>
+          <button
+            class="navbar-toggler shadow-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#adminDropdown"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse flex-column align-items-stretch mt-2"
+            id="adminDropdown"
+          >
+            <ul class="nav nav-pills flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-white" href="dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="bookings.html">Bookings</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link text-white" href="user.html">Users</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Rooms</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Features & Facilities -->
+
+    <div class="container-fluid" id="main-content">
+      <div class="row">
+        <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+          <h3 class="mb-4">Rooms</h3>
+
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <div class="text-end mb-4">
+                <button
+                  type="button"
+                  class="btn btn-dark shadow-none btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#add-room"
+                >
+                  <i class="bi bi-plus-square"></i> Add
+                </button>
+              </div>
+
+              <div
+                class="table-responsive-lg"
+                style="height: 450px; overflow-y: scroll"
+              >
+                <table class="table table-hover border text-center">
+                  <thead>
+                    <tr class="bg-dark text-light">
+                      <th scope="col">#</th>
+                      <th scope="col">room_name</th>
+                      <th scope="col">price</th>
+                      <th scope="col">details</th>
+                      <th scope="col">action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="room-data"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add room modal -->
+
+    <div
+      class="modal fade"
+      id="add-room"
+      data-bs-backdrop="static"
+      data-bs-keyboard="true"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <!-- Notification -->
+        <div class="alert alert-success d-none mx-5" role="alert"></div>
+        <div class="alert alert-danger d-none mx-5" role="alert"></div>
+        <form id="add_room_form" autocomplete="off">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add Room</h5>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="room_name" class="form-label fw-bold">Name</label>
+                  <input
+                    id="room_name"
+                    type="text"
+                    name="room_name"
+                    class="form-control shadow-none"
+                    required
+                  />
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                  <label for="image_path" class="form-label fw-bold">Image</label>
+                  <input
+                    type="file"
+                    min="1"
+                    id="image_path"
+                    name="image_path"
+                    class="form-control shadow-none"
+                  />
+                </div>
+            
+                <div class="col-md-6 mb-3">
+                  <label for="price" class="form-label fw-bold">Price</label>
+                  <input
+                    id="price"
+                    type="number"
+                    name="price"
+                    min="1"
+                    class="form-control shadow-none"
+                    required
+                  />
+                </div>
+            
+                <div class="col-12 mb-3">
+                  <label for="details" class="form-label fw-bold">Details</label>
+                  <textarea
+                    id="details"
+                    name="details"
+                    rows="4"
+                    class="form-control shadow-none"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="reset"
+                class="btn text-secondary shadow-none"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn custom-bg text-white shadow-none"
+              >
+                Submit
+              </button>
+            </div>
+            </form>
+            </div>
+            </div>
+            
+
+    <!-- Manage room images modal -->
+
+    <div
+      class="modal fade"
+      id="room-images"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Room Name</h5>
+            <button
+              type="button"
+              class="btn-close shadow-none"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="image-alert"></div>
+            <div class="border-bottom border-3 pb-3 mb-3">
+              <form id="add_image_form">
+                <label class="form-label fw-bold">Add Image</label>
+                <input
+                  type="file"
+                  name="image"
+                  accept=".jpg, .png, .webp, .jpeg"
+                  class="form-control shadow-none mb-3"
+                  required
+                />
+                <button class="btn custom-bg text-white shadow-none">
+                  Add
+                </button>
+                <input type="hidden" name="room_id" />
+              </form>
+            </div>
+            <div
+              class="table-responsive lg"
+              style="height: 350px; overflow-y: scroll"
+            >
+              <table class="table table-hover border text-center">
+                <thead>
+                  <tr class="bg-dark text-light sticky-top">
+                    <th scope="col" width="60%">Image</th>
+                    <th scope="col">Thumb</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody id="room-image-data"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script>
+      let add_room_form = document.getElementById("add_room_form");
+
+      add_room_form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        add_room();
+      });
+    </script> -->
+  </body>
+</html>
